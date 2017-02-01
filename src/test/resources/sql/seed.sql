@@ -36,7 +36,7 @@ VALUES
   ('Abhi',11,'MALE',1000),
   ('Ridhi',10,'FEMALE',100);
 
-INSERT INTO trips (car_id,pass_id,passanger_point, passanger_review,driver_point,driver_review)
+INSERT INTO trips (car_id,pass_id,passanger_point, passanger_review,driver_point,driver_review,total_cost)
 VALUES
-  (1,1,2,'good',2,'good'),
-  (2,2,2,'good',2,'good');
+  (1,1,2,'good',2,'good',200),
+  (2,2,2,'good',2,'good',300);

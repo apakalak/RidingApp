@@ -1,13 +1,15 @@
 package com.allstate.services;
 
 
+import com.allstate.entities.Car;
 import com.allstate.entities.Driver;
+import com.allstate.entities.Trip;
 import com.allstate.repositories.IDriverRepository;
-import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class DriverServices {
@@ -35,4 +37,9 @@ public class DriverServices {
             this.driverRepository.save(driver);
         }
     }
+
+    @Transactional
+    public List<Car> findAllTheCarsOwnByDriver(int id) {  return this.driverRepository.findOne(id).getCars(); }
+
+    public List<Trip> findAllTripsForGivenDriver(int id) { return this.driverRepository.findAllTripsForGivenDriver(id) ; }
 }

@@ -1,7 +1,6 @@
 package com.allstate.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javafx.beans.DefaultProperty;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;

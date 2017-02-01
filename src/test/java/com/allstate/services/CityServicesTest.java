@@ -1,7 +1,7 @@
 package com.allstate.services;
 
-import com.allstate.entities.Car;
 import com.allstate.entities.City;
+import com.allstate.entities.Driver;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,10 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -74,6 +77,13 @@ public class CityServicesTest {
     @Test(expected = EmptyResultDataAccessException.class)
     public void shouldDeleteCityByIDIfDoesNotExists() throws Exception {
         this.cityServices.deleteById(20);
+    }
+
+    @Test
+    public void fetchAllDriversInACity() throws Exception {
+        List<Driver> drivers = this.cityServices.findAllDriversInACity("bengluru");
+        assertEquals(1, drivers.size());
+        assertEquals("magdhir", drivers.get(0).getName());
 
     }
 }

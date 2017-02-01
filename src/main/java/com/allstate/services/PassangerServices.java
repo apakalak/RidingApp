@@ -18,4 +18,5 @@ public class PassangerServices {
     public Passanger findById(int id) { return  this.passangerRepo.findOne(id); }
 
     public void deleteById(int id) {this.passangerRepo.delete(id); }
+
 }

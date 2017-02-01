@@ -10,3 +10,5 @@ public class RidingAppApplication {
 		SpringApplication.run(RidingAppApplication.class, args);
 	}
 }
+
+

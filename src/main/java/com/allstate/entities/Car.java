@@ -10,7 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "cars")
@@ -53,9 +52,7 @@ public class Car {
         return this.make;
     }
 
-//    @OneToMany(mappedBy = "car")
-//    @JsonIgnore
-//    private List<Trip> trips;
+    private Boolean isAvailable;
 
 
 }

@@ -37,6 +37,7 @@ CREATE TABLE `cars` (
   `created` TIMESTAMP NULL DEFAULT now(),
   `modified` TIMESTAMP NULL DEFAULT now(),
   `driver_id` INT            NOT NULL ,
+  `is_available` BOOLEAN DEFAULT TRUE,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_driver_id`
   FOREIGN KEY (`driver_id`)

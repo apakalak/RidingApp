@@ -1,7 +1,10 @@
 package com.allstate.services;
 
 import com.allstate.entities.Car;
+import com.allstate.entities.Driver;
+import com.allstate.entities.Trip;
 import com.allstate.enums.CarType;
+import org.hibernate.exception.DataException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +14,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.transaction.Transactional;
-
-import java.util.Iterator;
+import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -27,6 +29,9 @@ public class CarServicesTest {
 
     @Autowired
     private DriverServices driverServices;
+
+    @Autowired
+    private CityServices cityServices;
 
     @Test
     public void shouldCreateCar() throws Exception {
@@ -69,6 +74,41 @@ public class CarServicesTest {
     @Test(expected = EmptyResultDataAccessException.class)
     public void shouldDeleteCarByIDIfDoesNotExists() throws Exception {
         this.carServices.deleteById(20);
+
+    }
+
+    @Test
+    public void findFirstOfAvailableCarsIfCarPresent() throws Exception {
+        Car car = this.carServices.findFirstOfAvailableCars("bengluru",CarType.BASIC);
+        assertNotNull(car);
+        assertEquals(3, car.getId());
+    }
+
+    @Test(expected = DataException.class)
+    public void findFirstOfAvailableCarsIfCarNotPresent() throws Exception {
+        this.carServices.findFirstOfAvailableCars("kolar",CarType.BASIC);
+    }
+
+    @Test
+    public void findCostForGivenDistance() throws  Exception {
+        double charge = this.carServices.findCostForGivenDistance(new Date(),
+                this.cityServices.findById(2), CarType.BASIC,40);
+        assertEquals(1000, charge,0.1);
+
+    }
+
+    @Test
+    public void findDriverForGivenCar() throws  Exception {
+        Driver driver = this.carServices.findDriverForGivenCar(2);
+        assertEquals("sudhir", driver.getName());
+
+    }
+
+    @Test
+    public void findAllTripsForGivenCar() throws  Exception {
+        List<Trip> trips = this.carServices.findAllTripsForGivenCar(2);
+        assertEquals( 1, trips.size());
+        assertEquals(2, trips.get(0).getId());
 
     }
 

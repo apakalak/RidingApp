@@ -1,9 +1,7 @@
 package com.allstate.services;
 
-import com.allstate.entities.Driver;
 import com.allstate.entities.Passanger;
 import com.allstate.enums.Gender;
-import com.allstate.repositories.IPassangerRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -62,5 +61,23 @@ public class PassangerServicesTest {
         this.passangerServices.deleteById(20);
 
     }
+
+
+//
+//    @Test
+//    public void findAllPassangerTakenTripInACity() throws  Exception {
+//        List<Passanger> listPassangers = this.tripServices.findAllPassangerTakenTripInACity(2);
+//        assertEquals(1, listPassangers.size());
+//        assertEquals("Abhi", listPassangers.get(0).getName());
+//
+//    }
+//
+//    @Test
+//    public void findAllPassangerTakenTripInACity() throws  Exception {
+//        List<Passanger> listPassangers = this.tripServices.findAllPassangerTakenTripInACity(2);
+//        assertEquals(1, listPassangers.size());
+//        assertEquals("Abhi", listPassangers.get(0).getName());
+//
+//    }
 
 }
