@@ -29,7 +29,6 @@ public class CarServices  {
 
     public void deleteById(int id) { this.carRepo.delete(id); }
 
-
     public Car findFirstOfAvailableCars(String city, CarType car_type) {
         List<Car> cars = this.carRepo.findAvailableCars(city,car_type);
         if(cars != null && cars.size() > 0){
