@@ -31,7 +31,7 @@ public class CarServices  {
 
 
     public Car findFirstOfAvailableCars(String city, CarType car_type) {
-        List<Car> cars = this.carRepo.findFirstOfAvailableCars(city,car_type);
+        List<Car> cars = this.carRepo.findAvailableCars(city,car_type);
         if(cars != null && cars.size() > 0){
             return cars.get(0);
         }

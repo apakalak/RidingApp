@@ -69,7 +69,6 @@ public class TripServicesTest {
         this.tripServices.createTrip(currentTime, city, car_type, roughDistance, currentPassanger);
     }
 
-
     @Test
     public void findCarTakenDuringTrip() throws  Exception {
         Car car = this.tripServices.findCarTakenDuringTrip(2);
@@ -101,7 +100,6 @@ public class TripServicesTest {
         assertEquals(1, drivers.size());
         assertEquals("sudhir", drivers.get(0).getName());
     }
-
 
     @Test
     public void findTotalExpenditureByAPassangerOnTrips() throws  Exception {

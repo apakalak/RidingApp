@@ -15,7 +15,7 @@ public interface ICarRepository extends CrudRepository<Car, Integer> {
 
     String queryToFindFirstCarAvailable = "SELECT c FROM Car c JOIN c.driver d JOIN d.city ci where  ci.name = :city AND c.type = :car_type AND d.no_of_voilation < 4 AND c.isAvailable = TRUE ";
     @Query(queryToFindFirstCarAvailable)
-    public List<Car> findFirstOfAvailableCars(@Param("city") String city, @Param("car_type") CarType car_type);
+    public List<Car> findAvailableCars(@Param("city") String city, @Param("car_type") CarType car_type);
 
 
     String queryToFindTripsGoneInCar = "select t from Trip t join t.car c where c.id = :id";
